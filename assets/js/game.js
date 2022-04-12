@@ -1,81 +1,81 @@
 var playerName = window.prompt("what is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
+var playerMoney = 10;
 
 //Tou can also log multiple values at once like this
 console.log(playerName, playerAttack, playerHealth);
 
 var enemyName = "Roberto";
 var enemyHealth = 50;
-var enemyAttack = 12; 
+var enemyAttack = 12;
 
-var fight = function() {
-    //Alert players that they are starting the round
-    window.alert("Welcome to Robot Gladiators!");
+var fight = function () {
+  //Alert players that they are starting the round
+  window.alert("Welcome to Robot Gladiators!");
 
-    //Subtract the value of 'playerAttack' from the value of 'enemyHealth' and use that result to update the value in the 'enemyHealth'
-enemyHealth = enemyHealth - playerAttack;
+  promptFight = window.prompt(
+    "Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose."
+  );
 
-    //Log a result in gmessage to the console so we know that it worked
-console.log(
-    playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + "health remaining."
-);
+  // if the player chooses to fight, then fight
+  if (promptFight === "fight" || promptFight === "FIGHT") {
+    // remove enemys health by subtracting the amount set in the playerAttack variable
+    enemyHealth = enemyHealth - playerAttack;
+    console.log(
+      playerName +
+        " attacked " +
+        enemyName +
+        ". " +
+        " now has " +
+        enemyHealth +
+        " health remaining. "
+    );
 
-    //Subtract the value of 'enemyAttack' from the value of 'playerAttack' and use that result to update the value in the 'playerHealth' variable.
+    //check enemys health
+    if (enemyHealth <= 0) {
+      window.alert(enemyName + " has died! ");
+    } else {
+      window.alert(enemyName + " still has " + enemyHealth + " health left ");
+    }
+
+    // remove players health by subracting the amount set in the enemyAttack variable
     playerHealth = playerHealth - enemyAttack;
+    console.log(
+      enemyName +
+        " attacked " +
+        playerName +
+        ". " +
+        playerName +
+        " now has " +
+        playerHealth +
+        " health remaining. "
+    );
 
-    //Log a resulting message to the console so we know theat it worked.
-console.log (
-    enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
+    // check players health
+    if (playerHealth <= 0) {
+      window.alert(playerName + " has died! ");
+    } else {
+      window.alert(
+        playerName + " still has " + playerHealth + " health left. "
+      );
+    }
+    // if player chooses to skip
+  } else if (promptFight === "skip" || promptFight === "SKIP") {
+    //Confirm your player wants to skip
+    var confirmSkip = window.confirm("Are you sure you'd like to quit?");
 
-
-//check players health 
-if (playerHealth <= 0) {
-    Window.alert(playerName + " has died ");
-}
-
-else {
-    window.alert(playerName + " still has " + playerHealth + " health left. ");
-}
-
-console.log (
-    playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining .");
-}
-
-//Check enemy's health
-if (enemyHealth <=0) {
-    window.alert(enemyName + " has died!")
-
-}
-
-else {
-    window.alert(enemyName + " still has " + enemyHealth + " healtlh left");
-}
-
+    //if yes (true), leave fight
+    if (confirmSkip) {
+      window.alert(playerName + " has decided to skip this fight. Goodbye! ");
+      //subtract money from playerMoney for skipping
+      playerMoney = playerMoney - 2;
+    }
+    //if no (false), ask question again by running fight() again
+    else {
+      fight();
+    }
+  }
+};
 
 fight();
-
-
-
-// Note the lack of question marks around playerName
-
-window.alert(playerName);
-
-
-console.log(playerName);
-
-console.log("this logs a string, good for leaving yourself a message");
-
-//this will do math and log 20
-console.log(10 + 10);
-
-//what is this?
-console.log("Our robot's name is " +  playerName);
-
-
-
-// This creates a function called 'fight'
-function fight() {
-    window.alert("The fight had begun!");
-}
-//fight();
