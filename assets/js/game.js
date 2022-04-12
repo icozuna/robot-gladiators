@@ -10,11 +10,12 @@ var enemyName = "Roberto";
 var enemyHealth = 50;
 var enemyAttack = 12;
 
+// fight function
 var fight = function () {
   //Alert players that they are starting the round
   window.alert("Welcome to Robot Gladiators!");
 
-  promptFight = window.prompt(
+  var promptFight = window.prompt(
     "Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose."
   );
 
@@ -75,6 +76,8 @@ var fight = function () {
     else {
       fight();
     }
+  } else {
+    window.alert("You need to pick a valid optio. Try again!");
   }
 };
 
