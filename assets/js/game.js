@@ -1,3 +1,9 @@
+//function to generate a random numeric value
+var randonNumber = function (min, max) {
+  var value = Math.floor(Math.random() * (max - min + 1) + min);
+
+  return value;
+};
 // fight function
 var fight = function (enemy) {
   console.log(enemy);
@@ -93,7 +99,7 @@ var startGame = function () {
       var pickedEnemyObj = enemyInfo[i];
 
       // reset enemy.health before starting new fight
-      pickedEnemyObj = randonNumber(40, 60);
+      pickedEnemyObj.health = randonNumber(40, 60);
 
       // use debugger to pause script from running and check what's going on at that moment in the code
       // debugger;
@@ -181,13 +187,6 @@ var shop = function () {
   }
 };
 
-//function to generate a random numeric value
-var randonNumber = function (min, max) {
-  var value = Math.floor(Math.random() * (max - min) + min);
-
-  return value;
-};
-
 var playerInfo = {
   name: window.prompt("What is your robots nam?"),
   health: 100,
@@ -233,6 +232,11 @@ var enemyInfo = [
     attack: randonNumber(10, 14),
   },
 ];
+
+console.log(enemyInfo);
+console.log(enemyInfo[0]);
+console.log(enemyInfo[0].name);
+console.log(enemyInfo[0]["attack"]);
 
 // start the game when the page loads
 startGame();
